@@ -1,0 +1,54 @@
+students = []
+
+def add_student():
+    name = input("Enter student name: ")
+    roll = input("Enter roll number: ")
+    marks = int(input("Enter marks: "))
+    
+    student = {
+        "name": name,
+        "roll": roll,
+        "marks": marks
+    }
+    
+    students.append(student)
+    print("Student added successfully!")
+
+def view_students():
+    if len(students) == 0:
+        print("No student records found")
+    else:
+        for s in students:
+            print("Name:", s["name"])
+            print("Roll:", s["roll"])
+            print("Marks:", s["marks"])
+            print("Grade:", calculate_grade(s["marks"]))
+            print("-------------------")
+
+def calculate_grade(marks):
+    if marks >= 90:
+        return "A"
+    elif marks >= 75:
+        return "B"
+    elif marks >= 50:
+        return "C"
+    else:
+        return "Fail"
+
+while True:
+    print("\nStudent Management System")
+    print("1. Add Student")
+    print("2. View Students")
+    print("3. Exit")
+
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        add_student()
+    elif choice == "2":
+        view_students()
+    elif choice == "3":
+        print("Exiting program...")
+        break
+    else:
+        print("Invalid choice")
